@@ -1,7 +1,18 @@
+@import './../../variables.scss';
+
 .nav{
     grid-area: n;
-    background-color:yellow;
+    background-color: $primaryColor;
+    padding: 15px;
+    border-radius: $blockRadius;
+    margin: $windowGap;
   }
-  .item{
+  .item a{
     color: grey;
+    text-decoration: none;
   }
+
+  .item a.active{
+    color: limegreen;
+  }
+  

@@ -1,7 +1,13 @@
+@import "./../../variables.scss";
+
 .header{
     grid-area: h;
-    background-color:yellow;
+    background-color: $primaryColor;
+    border-radius: $blockRadius;;
+    margin: $windowGap;
   }
   .header img{
     width: 100px;
+    margin: 5px;
+    border-radius: $blockRadius;
   }

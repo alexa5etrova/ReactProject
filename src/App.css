@@ -9,12 +9,21 @@
 
     grid-template-rows: 60 px 1fr;
       grid-template-columns: 2fr 10fr;
-      grid-gap: 10px;
+      grid-gap: 5px;
+
+      background-image: url(https://i.pinimg.com/originals/54/7c/56/547c560b63d2bb849ad77d3463fdf263.jpg);
+      weight:100%;
+      height: auto;
+      background-position: inherit;
+      background-repeat: no-repeat;
+      background-size: cover;     
 }
 .content{
   grid-area: c;
   background-color: beige;
   display:grid;
+  border-radius: 30px;
+  margin: 20px;
 }
 
 
