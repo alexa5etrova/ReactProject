@@ -1,13 +1,22 @@
+@import './../../variables.scss';
+
 .dialogs{
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-gap: 10px;
     
 }
-
 .dialog{
     padding: 10px;
 }
+
+.dialog a{
+     text-decoration: none;
+}
+a.active{
+    color: $activeColor;
+}
+
 .message{
     padding: 10px;
 }

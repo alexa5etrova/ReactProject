@@ -1,15 +1,20 @@
 @import './../../variables.scss';
 
 .profileBlock{
+  border-radius: $blockRadius;
+  
   
 }
-  .bannerImg {
-    background-image: url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/how-to-grow-succulents-1590071439.jpg?crop=1.00xw:0.755xh;0,0.0728xh&resize=1200:*);
-    weight:100%;
+.banner{
+    background-image: url(https://gardenerspath.com/wp-content/uploads/2018/07/11-Easy-Care-Succulents-Anyone-Can-Grow.jpg);
+    width:100%;
     height: 150px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    border-top-right-radius: $blockRadius;
+    border-top-left-radius: $blockRadius;
+    margin-bottom: 20px;
   }
 
   
