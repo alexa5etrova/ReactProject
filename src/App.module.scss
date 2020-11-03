@@ -1,0 +1,32 @@
+@import './variables';
+
+.appWrapper {
+  display: grid;
+  width:100%;
+  margin: 0 auto;
+
+  grid-template-areas:
+  "h h"
+  "n c";
+
+    grid-template-rows: 60 px 1fr;
+      grid-template-columns: 2fr 10fr;
+      grid-gap: 5px;
+
+      background-image: url(https://i.pinimg.com/originals/54/7c/56/547c560b63d2bb849ad77d3463fdf263.jpg);
+      weight:100%;
+      height: auto;
+      background-position: inherit;
+      background-repeat: no-repeat;
+      background-size: cover;     
+}
+.content{
+  grid-area: c;
+  background-color: $secondaryColor;
+  display:grid;
+  margin: $windowGap;
+  border-radius: $blockRadius;
+
+}
+
+
