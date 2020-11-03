@@ -3,25 +3,29 @@ import s from './PostBlock.module.scss';
 import Post from './Posts/Post';
 
 
-const PostBlock = () => {
+const PostBlock = (props) => {
 
-    const postData =[
-        {id: 1, message:"Finally, I've got a super rare gybrid", likes: "45"},
-        {id: 2, message:"Hi, there", likes: "5"}
-    ];
-    const posts = postData.map((p)=>(
+    let posts = props.postData.map((p)=>(
         <Post message={p.message} likes={p.likes} />
-    ))
+    ));
+
+    let newPostElement = React.createRef();
+
+
+    let addPost =()=>{
+        let text = newPostElement.current.value;
+        alert(text);
+    }
 
     return (
         <div className={s.postsArea}>
             <h3>My posts</h3>
             <div>
-                <textarea></textarea>
+                <textarea ref={newPostElement}></textarea>
             </div>
 
             <div>
-                <button>Publish</button>
+                <button onClick={addPost}> Publish</button>
             </div>
             <div className={s.posts}>
                 { posts }

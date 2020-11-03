@@ -9,7 +9,8 @@ import Profile from './components/Profile/Profile';
 
 
 
-const App = () => {
+const App = (props) => {
+  
   return (
     <BrowserRouter>
       <div className={s.appWrapper}>
@@ -18,8 +19,8 @@ const App = () => {
      
         <Nav />
         <div className={s.content}>
-          <Route component={Profile} path='/profile'/>
-          <Route component={Dialogs} path='/dialogs'/>
+          <Route render={() => <Profile posts={props.state.profilePage} /> } path='/profile'/>
+          <Route render={() => <Dialogs dialogs={props.state.dialogPage} /> } path='/dialogs'/>
         </div>
       </div>
     </BrowserRouter>
