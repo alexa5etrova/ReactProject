@@ -19,8 +19,16 @@ const App = (props) => {
      
         <Nav />
         <div className={s.content}>
-          <Route render={() => <Profile posts={props.state.profilePage} /> } path='/profile'/>
-          <Route render={() => <Dialogs dialogs={props.state.dialogPage} /> } path='/dialogs'/>
+          <Route render={() => <Profile 
+                                  posts={props.state.profilePage} 
+                                  addPost={props.addPost}
+                                  updateNewPostText={props.updateNewPostText}
+                                            /> } path='/profile'/>
+          <Route render={() => <Dialogs 
+                                  dialogs={props.state.dialogPage}
+                                  addMessage={props.addMessage}
+                                  updateNewMessageText={props.updateNewMessageText}
+                                  /> } path='/dialogs'/>
         </div>
       </div>
     </BrowserRouter>

@@ -12,7 +12,12 @@ const Profile = (props) => {
     <div className={s.profileBlock}>
       <div className={s.banner}></div>
       <ProfileInfo />
-      <PostBlock postData={props.posts.postData}/>
+      <PostBlock 
+                postData={props.posts.postData} 
+                addPost={props.addPost}
+                newPostText={props.posts.newPostText}
+                updateNewPostText={props.updateNewPostText}
+                />
     </div>
 
   );
