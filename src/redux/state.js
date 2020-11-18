@@ -22,48 +22,47 @@ const store = {
         }
              
     },
-
-    getState() {
-        return this._state;
-    },
-
     _callObserver() {
         console.log("test");
     },
 
-    addPost() {
-        let newPost = {
-            id: 3,
-            message: this._state.profilePage.newPostText,
-            likes: "0"
-        };
-        this._state.profilePage.postData.push(newPost);
-        this._state.profilePage.newPostText = "";
-        this._callObserver(this._state);
-    },
 
-    updateNewPostText (newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callObserver(this._state);
+    getState() {
+        return this._state;
     },
-
-    addMessage() {
-        let newMessage ={
-            id: 4,
-            message: this._state.dialogPage.newMessageText
-        };
-        this._state.dialogPage.messageData.push(newMessage);
-        this._state.dialogPage.newMessageText ="";
-        this._callObserver(this._state);
-    },
-
-    updateNewMessageText(text) {
-        this._state.dialogPage.newMessageText=text;
-        this._callObserver(this._state);
-    },
-
     subscribe(observer) {
         this._callObserver = observer;
+    },
+    
+
+    dispatch(action){
+        if (action.type === "ADD-POST"){
+            let newPost = {
+                id: 3,
+                message: this._state.profilePage.newPostText,
+                likes: "0"
+            };
+            this._state.profilePage.postData.push(newPost);
+            this._state.profilePage.newPostText = "";
+            this._callObserver(this._state);
+
+        } else if ( action.type === "UPDATE-NEW-POST-TEXT"){
+            this._state.profilePage.newPostText = action.newText;
+            this._callObserver(this._state);
+
+        } else if (action.type === "ADD-MESSAGE"){
+            let newMessage ={
+                id: 4,
+                message: this._state.dialogPage.newMessageText
+            };
+            this._state.dialogPage.messageData.push(newMessage);
+            this._state.dialogPage.newMessageText ="";
+            this._callObserver(this._state);
+
+        }else if (action.type === "UPDATE-NEW-MESSAGE-TEXT"){
+            this._state.dialogPage.newMessageText=action.text;
+            this._callObserver(this._state);
+        }
     }
 
 }

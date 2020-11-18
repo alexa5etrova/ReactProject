@@ -21,13 +21,11 @@ const App = (props) => {
         <div className={s.content}>
           <Route render={() => <Profile 
                                   posts={props.state.profilePage} 
-                                  addPost={props.addPost}
-                                  updateNewPostText={props.updateNewPostText}
+                                  dispatch={props.dispatch}
                                             /> } path='/profile'/>
           <Route render={() => <Dialogs 
                                   dialogs={props.state.dialogPage}
-                                  addMessage={props.addMessage}
-                                  updateNewMessageText={props.updateNewMessageText}
+                                  dispatch={props.dispatch}
                                   /> } path='/dialogs'/>
         </div>
       </div>
