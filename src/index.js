@@ -6,8 +6,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 
-import {addPost, updateNewPostText, updateNewMessageText, addMessage} from './redux/state';
-
 
 let renderEntireDoc = (state) => {
     ReactDOM.render( 

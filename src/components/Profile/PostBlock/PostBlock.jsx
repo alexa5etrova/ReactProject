@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './PostBlock.module.scss';
 import Post from './Posts/Post';
+import { addPostActionCreator, updateNewPostTextActionCreator} from './../../../redux/profileReducer';
 
 
 const PostBlock = (props) => {
@@ -13,13 +14,13 @@ const PostBlock = (props) => {
 
 
     let addPost =()=>{
-        props.dispatch({type:"ADD-POST"});
+        props.dispatch(addPostActionCreator());
         
     }
     
     let onPostChange = () =>{
         let text =newPostElement.current.value;
-        props.dispatch({type: "UPDATE-NEW-POST-TEXT", newText: text});
+        props.dispatch(updateNewPostTextActionCreator(text));
     }
 
     return (

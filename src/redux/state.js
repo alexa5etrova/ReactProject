@@ -1,3 +1,6 @@
+import dialogReducer from "./dialogsReducer";
+import profileReducer from "./profileReducer";
+
 const store = {
     _state: {
         profilePage: {
@@ -18,7 +21,7 @@ const store = {
                 {id: 2, message: "Hi"},
                 {id: 3, message: "Privet!"}
               ],
-            newMessageText: "enter here your message"
+            newMessageText: ""
         }
              
     },
@@ -36,39 +39,14 @@ const store = {
     
 
     dispatch(action){
-        if (action.type === "ADD-POST"){
-            let newPost = {
-                id: 3,
-                message: this._state.profilePage.newPostText,
-                likes: "0"
-            };
-            this._state.profilePage.postData.push(newPost);
-            this._state.profilePage.newPostText = "";
-            this._callObserver(this._state);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogPage = dialogReducer(this._state.dialogPage, action);
 
-        } else if ( action.type === "UPDATE-NEW-POST-TEXT"){
-            this._state.profilePage.newPostText = action.newText;
-            this._callObserver(this._state);
-
-        } else if (action.type === "ADD-MESSAGE"){
-            let newMessage ={
-                id: 4,
-                message: this._state.dialogPage.newMessageText
-            };
-            this._state.dialogPage.messageData.push(newMessage);
-            this._state.dialogPage.newMessageText ="";
-            this._callObserver(this._state);
-
-        }else if (action.type === "UPDATE-NEW-MESSAGE-TEXT"){
-            this._state.dialogPage.newMessageText=action.text;
-            this._callObserver(this._state);
-        }
+        this._callObserver(this._state);
+        
     }
 
-}
-
-
-
+};
 
 
 

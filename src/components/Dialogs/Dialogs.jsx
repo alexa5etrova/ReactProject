@@ -1,8 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { addMessageActionCreator, updateNewMessageTextActionCreator } from './../../redux/dialogsReducer';
+import DialogItem from './DialogItem/DialogItem.jsx';
 import s from './Dialogs.module.scss';
 import Message from './Message/Message';
-import DialogItem from './DialogItem/DialogItem.jsx';
 
 
 
@@ -14,12 +14,12 @@ const Dialogs = (props) => {
     let newMessageElement = React.createRef();
 
     let sendMessage = () => {
-        props.dispatch( {type: "ADD-MESSAGE"});
+        props.dispatch(addMessageActionCreator());
         
     }
     let onMessagechange = () =>{
         let text = newMessageElement.current.value;
-        props.dispatch({type: "UPDATE-NEW-MESSAGE-TEXT", text: text });
+        props.dispatch(updateNewMessageTextActionCreator(text));
 
     }
 
@@ -33,6 +33,7 @@ const Dialogs = (props) => {
 
                 <div>
                     <textarea 
+                    placeholder='enter your message here'
                     onChange={onMessagechange}
                     ref={newMessageElement}
                     value={props.dialogs.newMessageText}
