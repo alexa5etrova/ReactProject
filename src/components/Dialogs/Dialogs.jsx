@@ -1,5 +1,4 @@
 import React from 'react';
-import { addMessageActionCreator, updateNewMessageTextActionCreator } from './../../redux/dialogsReducer';
 import DialogItem from './DialogItem/DialogItem.jsx';
 import s from './Dialogs.module.scss';
 import Message from './Message/Message';
@@ -8,18 +7,18 @@ import Message from './Message/Message';
 
 const Dialogs = (props) => {
 
-    const dialogNames = props.dialogs.dialogData.map((d) => (<DialogItem name={d.name} id={d.id} />))
-    const messages = props.dialogs.messageData.map((m) => (<Message message={m.message} />))
+    const dialogNames = props.dialogs.map((d) => (<DialogItem name={d.name} id={d.id} />))
+    const messages = props.messages.map((m) => (<Message message={m.message} />))
 
     let newMessageElement = React.createRef();
 
     let sendMessage = () => {
-        props.dispatch(addMessageActionCreator());
+        props.sendMessage();
         
     }
     let onMessagechange = () =>{
         let text = newMessageElement.current.value;
-        props.dispatch(updateNewMessageTextActionCreator(text));
+        props.updateMessage(text);
 
     }
 
@@ -36,7 +35,7 @@ const Dialogs = (props) => {
                     placeholder='enter your message here'
                     onChange={onMessagechange}
                     ref={newMessageElement}
-                    value={props.dialogs.newMessageText}
+                    value={props.newMessageText}
 
                     />
                 </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import s from './App.module.scss';
-import Dialogs from './components/Dialogs/Dialogs';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Header from './components/Header/Header';
 import Nav from './components/Nav/Nav';
 import Profile from './components/Profile/Profile';
@@ -20,12 +20,10 @@ const App = (props) => {
         <Nav />
         <div className={s.content}>
           <Route render={() => <Profile 
-                                  posts={props.state.profilePage} 
-                                  dispatch={props.dispatch}
-                                            /> } path='/profile'/>
-          <Route render={() => <Dialogs 
-                                  dialogs={props.state.dialogPage}
-                                  dispatch={props.dispatch}
+                                  store={props.store} 
+                                                                              /> } path='/profile'/>
+          <Route render={() => <DialogsContainer 
+                                  store={props.store}
                                   /> } path='/dialogs'/>
         </div>
       </div>
