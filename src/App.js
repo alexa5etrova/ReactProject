@@ -12,22 +12,18 @@ import Profile from './components/Profile/Profile';
 const App = (props) => {
   
   return (
-    <BrowserRouter>
+    
       <div className={s.appWrapper}>
 
         <Header />
      
         <Nav />
         <div className={s.content}>
-          <Route render={() => <Profile 
-                                  store={props.store} 
-                                                                              /> } path='/profile'/>
-          <Route render={() => <DialogsContainer 
-                                  store={props.store}
-                                  /> } path='/dialogs'/>
+          <Route render={() => <Profile />} path='/profile'/>
+          <Route render={() => <DialogsContainer /> } path='/dialogs'/>
         </div>
       </div>
-    </BrowserRouter>
+    
   );
 }
 
