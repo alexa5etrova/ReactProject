@@ -6,15 +6,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import StoreContext from './redux/StoreContext';
+import { Provider } from 'react-redux';
 
 
 let renderEntireDoc = (state) => {
     ReactDOM.render( 
       <BrowserRouter>
-        <StoreContext.Provider value={store}>
+        <Provider store={store}>
           <App />
-        </StoreContext.Provider>
+        </Provider>
       </BrowserRouter>, document.getElementById('root')
     );
     
