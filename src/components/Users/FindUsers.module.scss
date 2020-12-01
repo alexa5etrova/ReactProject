@@ -1,0 +1,26 @@
+@import './../../variables.scss';
+
+.btnFollow{
+    background-color: $primaryColor;
+}
+
+
+.userContainer{
+    display:grid;
+    grid-template-columns: 150px 2fr;
+    margin: $windowGap;
+    background-color: $thirdColor;
+    border-radius: $blockRadius;
+
+    
+}
+
+.userAva{
+    height: 100px;
+    width: 100px;
+    border-radius:50%;
+}
+.userInfoShield{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
