@@ -35,7 +35,7 @@ const PostBlock = (props) => {
             </div>
 
             <div>
-                <button onClick={addPost}> Publish</button>
+                <button onClick={addPost} className={s.publishButton}> Publish</button>
             </div>
             <div className={s.posts}>
                 { posts }

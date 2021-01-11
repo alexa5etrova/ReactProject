@@ -1,0 +1,12 @@
+@import './variables.scss';
+
+
+
+@mixin button() {
+    background-color: $primaryColor;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 16px;
+}
