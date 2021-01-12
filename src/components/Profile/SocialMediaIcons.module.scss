@@ -1,0 +1,10 @@
+@import './../../variables.scss';
+@import './../../mixins.scss';
+
+.icon{
+    @include icon;
+      
+}
+.iconContainer{
+    display: inline-block;
+}
