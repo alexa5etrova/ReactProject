@@ -3,9 +3,62 @@
 
 .descriptionBlock{
     padding: 10px;
-    
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+    border: 3px solid $primaryColor;
+    border-radius: $blockRadius;
+    background-color:white;
+    margin-left:0.5rem;
+    margin-right: 0.5rem;
 }
 
 .icon {
     @include icon;
+    width: 2rem;
+}
+
+.infoContainer{
+    padding-right: 1.5vw;
+    padding-left: 1.5vw;
+    
+}
+.userName{
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+}
+.aboutMe{
+    font-size: 1.3rem;
+    font-style: italic;
+    text-align: right;
+    color: $primaryColor
+
+}
+.lookingForAJob{
+    padding-top: 1.2rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    max-width: 20rem;
+    
+    
+}
+.requireJob{
+    display: inline-block;
+    padding-top: 1.4rem;
+    vertical-align: top;
+    
+    
+    
+
+}
+.crossTick{
+    display: inline-block;
+    
+    
+}
+.crossTick img {
+      vertical-align: bottom;
+}
+.smContainer{
+    
 }

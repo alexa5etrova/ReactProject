@@ -3,8 +3,10 @@
 
 .icon{
     @include icon;
+    padding-left:0;
       
 }
 .iconContainer{
     display: inline-block;
+    
 }
