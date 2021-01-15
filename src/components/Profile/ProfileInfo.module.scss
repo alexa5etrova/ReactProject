@@ -1,64 +1,78 @@
 @import './../../variables.scss';
 @import './../../mixins.scss';
 
-.descriptionBlock{
+.descriptionBlock {
     padding: 10px;
     display: grid;
     grid-template-columns: 3fr 9fr;
     border: 3px solid $primaryColor;
     border-radius: $blockRadius;
-    background-color:white;
-    margin-left:0.5rem;
-    margin-right: 0.5rem;
-}
+    background-color: white;
+    margin: 0.7rem;
 
+}
+.imgContainer img{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    align-self: center;
+    border: 2px solid $primaryColor;
+}
 .icon {
     @include icon;
-    width: 2rem;
+    width: 1rem;
+    display: inline-block;
+    padding: 0;
+    vertical-align: bottom;
 }
 
-.infoContainer{
-    padding-right: 1.5vw;
-    padding-left: 1.5vw;
-    
+.infoContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        'userName userName userName'
+        '. aboutMe aboutMe'
+        'job job .'
+        '. socialMedia socialMedia';
+    align-items: top; 
+   
+
 }
-.userName{
+
+.userName {
+    grid-area: userName;
     font-size: 2rem;
     font-weight: bold;
-    text-align: center;
+    justify-self:center;
 }
-.aboutMe{
-    font-size: 1.3rem;
+
+.aboutMe {
+    grid-area: aboutMe;
+    font-size: 1rem;
     font-style: italic;
-    text-align: right;
-    color: $primaryColor
+    color: $primaryColor;
+    justify-self: right;
+    
+}
 
+.lookingForAJob {
+    grid-area: job;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-style: italic;
 }
-.lookingForAJob{
-    padding-top: 1.2rem;
-    font-size: 1.3rem;
-    font-weight: bold;
-    max-width: 20rem;
-    
-    
-}
-.requireJob{
-    display: inline-block;
-    padding-top: 1.4rem;
-    vertical-align: top;
-    
-    
-    
 
+.requireJob {
+    color: grey;
 }
-.crossTick{
-    display: inline-block;
-    
-    
+
+.positionRequested{
+    color: $primaryColor;
 }
-.crossTick img {
-      vertical-align: bottom;
-}
-.smContainer{
-    
+
+
+
+.smContainer {
+    grid-area: socialMedia;
+    justify-self: right;
 }

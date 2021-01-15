@@ -12,11 +12,11 @@ import githubIcon from './../../assets/images/socialMediaIcons/githubIcon.svg';
 const SocialMediaIcons = (props) => {
     
     
-    return <div>
+    return <div className={s.iconContainer}>
 
 
 
-        <div className={s.iconContainer}>{
+        <div className={s.iconItem}>{
             !props.contacts.facebook
                 ? null
                 : <a href={'http://' + props.contacts.facebook} target='blank'>
@@ -24,7 +24,7 @@ const SocialMediaIcons = (props) => {
                 </a>}
         </div>
 
-        <div className={s.iconContainer}>{
+        <div className={s.iconItem}>{
             !props.contacts.website
                 ? null
                 : <a href={'http://' + props.contacts.website} target='blank'>
@@ -32,7 +32,7 @@ const SocialMediaIcons = (props) => {
                 </a>}
         </div>
 
-        <div className={s.iconContainer}>{
+        <div className={s.iconItem}>{
             !props.contacts.vk
                 ? null
                 : <a href={'http://' + props.contacts.vk} target='blank'>
@@ -40,7 +40,7 @@ const SocialMediaIcons = (props) => {
                 </a>}
         </div>
 
-        <div className={s.iconContainer}>{
+        <div className={s.iconItem}>{
             !props.contacts.twitter
                 ? null
                 : <a href={'http://' + props.contacts.twitter} target='blank'>
@@ -48,7 +48,7 @@ const SocialMediaIcons = (props) => {
                 </a>}
         </div>
 
-        <div className={s.iconContainer}>{
+        <div className={s.iconItem}>{
             !props.contacts.instagram
                 ? null
                 : <a href={'http://' + props.contacts.instagram} target='blank'>
@@ -56,7 +56,7 @@ const SocialMediaIcons = (props) => {
                 </a>}
         </div>
 
-        <div className={s.iconContainer}>{
+        <div className={s.iconItem}>{
             !props.contacts.youtube
                 ? null
                 : <a href={'http://' + props.contacts.youtube} target='blank'>
@@ -64,7 +64,7 @@ const SocialMediaIcons = (props) => {
                 </a>}
         </div>
 
-        <div className={s.iconContainer}>{
+        <div className={s.iconItem}>{
             !props.contacts.github
                 ? null
                 : <a href={'http://' + props.contacts.github} target='blank'>

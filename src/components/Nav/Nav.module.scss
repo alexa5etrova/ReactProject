@@ -5,7 +5,11 @@
     background-color: $secondaryColor;
     padding: 15px;
     border-radius: $blockRadius;
-    margin: $windowGap;
+    margin-left: $windowGap;
+    margin-right: $windowGap;
+    display: grid;
+    grid-template-columns: repeat(6, 2fr);
+    justify-items: center;
   }
   .item a{
     color: grey;

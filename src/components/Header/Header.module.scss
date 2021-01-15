@@ -4,7 +4,9 @@
     grid-area: h;
     background-color: $primaryColor;
     border-radius: $blockRadius;;
-    margin: $windowGap;
+    margin-left: $windowGap;
+    margin-right: $windowGap;
+    margin-top: $windowGap;
   }
   .header img{
     width: 100px;

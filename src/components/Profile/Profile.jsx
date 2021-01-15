@@ -17,7 +17,7 @@ const Profile = (props) => {
     <div className={s.profileBlock}>
       <div className={s.banner}></div>
       <ProfileInfo profile={props.profile} />
-      <PostBlockContainer />
+      <PostBlockContainer smallPhoto={props.profile.photos.small}/>
     </div>
 
   );
