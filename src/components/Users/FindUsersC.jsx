@@ -3,7 +3,7 @@ import React from 'react';
 import s from './FindUsers.module.scss';
 import userPhoto from './../../assets/images/userPhoto.png';
 import { NavLink } from 'react-router-dom';
-import * as axios from 'axios';
+import { usersApi } from '../../api/api';
 
 
 
@@ -43,39 +43,25 @@ let FindUsers = (props) => {
                             {u.followed
                                 ? <button className={s.btnFollow} onClick={() => {
 
-                                    axios
-                                        .delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                            withCredentials: true,
-                                            headers: {
-                                                'API-KEY': 'b4b88448-459a-4ee2-987d-453bfb5dee49'
-                                            }
-                                        })
-                                        .then(response => {
-                                            if(response.data.resultCode === 0){
+                                    usersApi.unfollowUser(u.id)
+                                        .then(data => {
+                                            if (data.resultCode === 0) {
                                                 props.userFollow(u.id)
-
                                             }
-                                   
                                         });
-                                    
+
                                     props.userFollow(u.id)
                                 }}>Unfollow</button>
-                                : <button className={s.btnFollow} onClick={() => {
-                                    axios
-                                        .post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-                                            withCredentials: true,
-                                            headers: {
-                                                'API-KEY': 'b4b88448-459a-4ee2-987d-453bfb5dee49'
-                                            }
-                                        })
-                                        .then(response => {
-                                            if(response.data.resultCode === 0){
-                                                props.userFollow(u.id)
 
-                                            }
-                                   
-                                        });
-                                     }}>Follow</button>}
+                                
+                                : <button className={s.btnFollow} onClick={() => {
+
+                                    usersApi.followUser(u.id).then(data => {
+                                        if (data.resultCode === 0) {
+                                            props.userFollow(u.id)
+                                        }
+                                    });
+                                }}>Follow</button>}
 
                         </div>
                     </div>
