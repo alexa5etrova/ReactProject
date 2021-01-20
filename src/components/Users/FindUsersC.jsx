@@ -39,31 +39,38 @@ let FindUsers = (props) => {
                                 <img src={u.photos.small != null ? u.photos.small : userPhoto} className={s.userAva} />
                             </NavLink>
                         </div>
+
+
                         <div>
                             {u.followed
-                                ? <button className={s.btnFollow} onClick={() => {
-
+                                ? <button disabled={props.followingInProgress.some(id=>id === u.id)} className={s.btnFollow} onClick={() => {
+                                    props.toggleFollowingProgress(true, u.id);
                                     usersApi.unfollowUser(u.id)
                                         .then(data => {
                                             if (data.resultCode === 0) {
                                                 props.userFollow(u.id)
                                             }
+                                            props.toggleFollowingProgress(false, u.id);
                                         });
+
 
                                     props.userFollow(u.id)
                                 }}>Unfollow</button>
 
                                 
-                                : <button className={s.btnFollow} onClick={() => {
-
+                                : <button disabled={props.followingInProgress.some(id=>id === u.id)} className={s.btnFollow} onClick={() => {
+                                    props.toggleFollowingProgress(true, u.id);
                                     usersApi.followUser(u.id).then(data => {
                                         if (data.resultCode === 0) {
                                             props.userFollow(u.id)
                                         }
+                                        props.toggleFollowingProgress(false, u.id);
                                     });
                                 }}>Follow</button>}
 
                         </div>
+
+
                     </div>
                     <div className={s.userInfoShield}>
                         <div>
