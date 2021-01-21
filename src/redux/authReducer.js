@@ -1,3 +1,5 @@
+import { authApi } from "../api/api";
+
 const SET_USER_AUTH = 'SETH-USER-AUTH';
 
 
@@ -24,7 +26,19 @@ const authReducer = (state = initionalState, action) => {
     }
 }
 
-export const setUserAuth = (userId, email, login)=>({type:SET_USER_AUTH, data:{userId, email, login}})
+export const setUserAuth = (id, email, login)=>({type:SET_USER_AUTH, data:{id, email, login}})
 
+
+export const confirmAuth = () => {
+    return (dispatch) => {
+        authApi.checkAuth().then(data => {
+            if(data.resultCode === 0){
+                let {id, email, login} = data.data;
+                dispatch (setUserAuth(id, email, login));
+            }
+                     
+        });
+    }
+}
 
 export default authReducer;

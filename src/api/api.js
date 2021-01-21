@@ -37,10 +37,22 @@ export const usersApi = {
 };
 
 
+
+
 export const profileApi = {
     getProfileInfo(userId){
         return instance
-        .get('/profile/' + userId)
+        .get('profile/' + userId)
+        .then(response => {
+            return response.data
+        });
+    }
+}
+
+export const authApi = {
+    checkAuth(){
+        return instance
+        .get ('auth/me')
         .then(response => {
             return response.data
         });
