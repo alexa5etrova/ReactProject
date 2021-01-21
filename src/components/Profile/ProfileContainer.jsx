@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Profile from './Profile';
 import {downloadProfileInfo} from './../../redux/profileReducer';
-import { Redirect, withRouter } from 'react-router-dom';
+import {  withRouter } from 'react-router-dom';
 import { withLoginRedirect } from '../../hoc/withLoginRedirect';
+import { compose } from 'redux';
 
 
 
@@ -42,9 +43,9 @@ let mapStateToProps = (state) => {
    
 };
 
-let LoginRedirect = withLoginRedirect(ProfileContainer);
 
-
-let WithUrlDataProfileContainer = withRouter(LoginRedirect);
-
-export default connect(mapStateToProps, {downloadProfileInfo})(WithUrlDataProfileContainer);
+export default compose(
+    connect(mapStateToProps, {downloadProfileInfo}),
+    withRouter,
+    withLoginRedirect
+)(ProfileContainer)

@@ -1,39 +1,41 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { withLoginRedirect } from '../../hoc/withLoginRedirect';
 import { addMessageActionCreator, updateNewMessageTextActionCreator } from '../../redux/dialogsReducer';
 import Dialogs from './Dialogs';
 
 
 class DialogsContainer extends React.Component {
-    render(){
-        return <Dialogs {...this.props}/>
+    render() {
+        return <Dialogs {...this.props} />
     }
 }
 
-let mapStateToProps =(state)=>{
-    return{
+let mapStateToProps = (state) => {
+    return {
         dialogs: state.dialogPage.dialogData,
         messages: state.dialogPage.messageData,
         newMessageText: state.dialogPage.newMessageText,
-        
+
     }
 };
 
-let mapDispatchToProps =(dispatch)=>{
-    return{
-        sendMessage: ()=>{
+let mapDispatchToProps = (dispatch) => {
+    return {
+        sendMessage: () => {
             dispatch(addMessageActionCreator());
         },
-        updateMessage: (text)=>{
+        updateMessage: (text) => {
             let action = updateNewMessageTextActionCreator(text);
             dispatch(action);
         }
     }
 }
 
-let LoginRedirect = withLoginRedirect(DialogsContainer);
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginRedirect);
 
 
+export default compose (
+    connect(mapStateToProps, mapDispatchToProps),
+    withLoginRedirect
+)(DialogsContainer);

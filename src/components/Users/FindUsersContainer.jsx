@@ -1,11 +1,13 @@
 import React from 'react';
 import FindUsers from './FindUsers';
-import { setCurrentPage,   getUsers, doUnfollowUser, doFollowUser} from '../../redux/userReducer';
+import { setCurrentPage, getUsers, doUnfollowUser, doFollowUser } from '../../redux/userReducer';
 import { connect } from 'react-redux';
 import LoadingImg from '../commons/LoadingImg';
+import { compose } from 'redux';
+import { withLoginRedirect } from '../../hoc/withLoginRedirect';
 
 class UsersContainer extends React.Component {
-    componentDidMount(){
+    componentDidMount() {
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
 
     };
@@ -18,19 +20,19 @@ class UsersContainer extends React.Component {
     }
     render() {
         return <>
-        <div>{ this.props.isFetching ? <LoadingImg /> : <FindUsers 
-                    totalUsersCount={this.props.totalUsersCount}
-                    pageSize={this.props.pageSize}
-                    currentPage={this.props.currentPage}
-                    onPageChanged={this.onPageChanged}
-                    users={this.props.users}
-                    followingInProgress={this.props.followingInProgress}
-                    doUnfollowUser={this.props.doUnfollowUser}
-                    doFollowUser={this.props.doFollowUser}
-        
-        /> }</div>
+            <div>{this.props.isFetching ? <LoadingImg /> : <FindUsers
+                totalUsersCount={this.props.totalUsersCount}
+                pageSize={this.props.pageSize}
+                currentPage={this.props.currentPage}
+                onPageChanged={this.onPageChanged}
+                users={this.props.users}
+                followingInProgress={this.props.followingInProgress}
+                doUnfollowUser={this.props.doUnfollowUser}
+                doFollowUser={this.props.doFollowUser}
 
-        
+            />}</div>
+
+
         </>
     }
 
@@ -40,7 +42,7 @@ class UsersContainer extends React.Component {
 
 
 
-let mapStateToProps = (state)=>{
+let mapStateToProps = (state) => {
     return {
         users: state.usersPage.userData,
         pageSize: state.usersPage.pageSize,
@@ -48,15 +50,17 @@ let mapStateToProps = (state)=>{
         currentPage: state.usersPage.currentPage,
         isFetching: state.usersPage.isFetching,
         followingInProgress: state.usersPage.followingInProgress
-        
+
     }
 
 }
 
-export default connect(mapStateToProps, {
-    setCurrentPage,
-    getUsers,
-    doUnfollowUser,
-    doFollowUser
-})(UsersContainer);
+export default compose(
+    connect(mapStateToProps, {
+        setCurrentPage,
+        getUsers,
+        doUnfollowUser,
+        doFollowUser
+    }),
+    withLoginRedirect)(UsersContainer);
 
