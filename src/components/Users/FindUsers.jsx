@@ -58,7 +58,7 @@ const FindUsers = (props) => {
                     <div className={s.userInfoShield}>
                         <div>
                             <div>{u.name}</div>
-                            <div>{u.status}</div>
+                            <div className={s.status}>{u.status}</div>
                         </div>
                         <div>
                             <div>"u.location.country"</div>

@@ -5,6 +5,8 @@ import {
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
+const UPDATE_STATUS = "UPDATE_STATUS";
+
 
 let initionalState = {
     postData: [{
@@ -19,7 +21,8 @@ let initionalState = {
         }
     ],
     newPostText: 'Enter you post here',
-    profile: null
+    profile: null,
+    status: ''
 };
 
 const profileReducer = (state = initionalState, action) => {
@@ -29,7 +32,7 @@ const profileReducer = (state = initionalState, action) => {
             return {
                 ...state,
                 newPostText: action.newText
-            }
+            };
             case ADD_POST:
                 let newPost = state.newPostText;
                 return {
@@ -46,11 +49,20 @@ const profileReducer = (state = initionalState, action) => {
 
                 };
 
+
             case SET_USER_PROFILE:
                 return {
                     ...state,
                     profile: action.profile
-                }
+                };
+
+                case UPDATE_STATUS:
+                    return {
+                        ...state,
+                        status: action.status
+                    };
+
+                   
                 default:
                     return state;
 
@@ -68,15 +80,41 @@ export const setUserProfile = (profile) => ({
     profile
 });
 
+export const updateStatus = (status) => ({
+    type: UPDATE_STATUS,
+    status
+})
+
 
 export const downloadProfileInfo = (userId) => {
     return (dispatch) => {
         profileApi.getProfileInfo(userId)
-            .then(data => {
-                dispatch(setUserProfile(data));
+            .then(responce => {
+                dispatch(setUserProfile(responce.data));
             });
     }
 }
 
+
+export const receiveStatus = (userId)=>{
+    return (dispatch) =>{
+        profileApi.getStatus(userId)
+            .then(responce =>{
+                dispatch(updateStatus(responce.data));
+            })
+    }
+}
+
+export const pushStatus = (status)=>{
+    return (dispatch) =>{
+        profileApi.updateStatus(status)
+            .then(responce =>{
+                if(responce.data.resultCode === 0){
+                    dispatch(updateStatus(status));
+                }
+             
+            })
+    }
+}
 
 export default profileReducer;

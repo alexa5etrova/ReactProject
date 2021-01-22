@@ -62,5 +62,6 @@ export default compose(
         doUnfollowUser,
         doFollowUser
     }),
-    withLoginRedirect)(UsersContainer);
+    // withLoginRedirect
+    )(UsersContainer);
 

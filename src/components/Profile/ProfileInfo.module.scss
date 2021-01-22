@@ -31,6 +31,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas:
         'userName userName userName'
+        '. status .'
         '. aboutMe aboutMe'
         'job job .'
         '. socialMedia socialMedia';
@@ -52,6 +53,11 @@
     font-style: italic;
     color: $primaryColor;
     justify-self: right;
+    
+}
+
+.status{
+    grid-area: status;
     
 }
 

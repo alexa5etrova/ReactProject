@@ -31,9 +31,9 @@ export const setUserAuth = (id, email, login)=>({type:SET_USER_AUTH, data:{id, e
 
 export const confirmAuth = () => {
     return (dispatch) => {
-        authApi.checkAuth().then(data => {
-            if(data.resultCode === 0){
-                let {id, email, login} = data.data;
+        authApi.checkAuth().then(responce => {
+            if(responce.data.resultCode === 0){
+                let {id, email, login} = responce.data.data;
                 dispatch (setUserAuth(id, email, login));
             }
                      

@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Profile from './Profile';
-import {downloadProfileInfo} from './../../redux/profileReducer';
-import {  withRouter } from 'react-router-dom';
-import { withLoginRedirect } from '../../hoc/withLoginRedirect';
+import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
+import { downloadProfileInfo, receiveStatus, pushStatus} from './../../redux/profileReducer';
+import Profile from './Profile';
 
 
 
@@ -16,16 +15,15 @@ class ProfileContainer extends React.Component {
     componentDidMount(){
         let userId = this.props.match.params.userId;
         if(!userId){
-            userId = 2;
+            userId = 14103;
         }
-
         this.props.downloadProfileInfo(userId);
+        this.props.receiveStatus(userId);
+        
       
     }
 
     render() {
-        
-
         return (
             <Profile {...this.props}/>
 
@@ -38,6 +36,7 @@ class ProfileContainer extends React.Component {
 let mapStateToProps = (state) => {
     return{ 
         profile: state.profilePage.profile,
+        status: state.profilePage.status
         
     }
    
@@ -45,7 +44,7 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
-    connect(mapStateToProps, {downloadProfileInfo}),
+    connect(mapStateToProps, {downloadProfileInfo, receiveStatus, pushStatus }),
     withRouter,
-    withLoginRedirect
+    // withLoginRedirect
 )(ProfileContainer)

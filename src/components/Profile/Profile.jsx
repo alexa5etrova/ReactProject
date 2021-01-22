@@ -16,7 +16,7 @@ const Profile = (props) => {
   return (
     <div className={s.profileBlock}>
       <div className={s.banner}></div>
-      <ProfileInfo profile={props.profile} />
+      <ProfileInfo profile={props.profile} status={props.status} pushStatus={props.pushStatus}/>
       <PostBlockContainer smallPhoto={props.profile.photos.small}/>
     </div>
 
