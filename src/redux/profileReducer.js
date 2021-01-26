@@ -3,7 +3,6 @@ import {
 } from "../api/api";
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
 const UPDATE_STATUS = "UPDATE_STATUS";
 
@@ -20,7 +19,6 @@ let initionalState = {
             likes: "5"
         }
     ],
-    newPostText: 'Enter you post here',
     profile: null,
     status: ''
 };
@@ -28,53 +26,45 @@ let initionalState = {
 const profileReducer = (state = initionalState, action) => {
     switch (action.type) {
 
-        case UPDATE_NEW_POST_TEXT:
+        case ADD_POST:
+            let newPost = action.newPostText;
             return {
                 ...state,
-                newPostText: action.newText
+                postData: [
+                    ...state.postData,
+                    {
+                        id: 3,
+                        message: newPost,
+                        likes: "0"
+                    }
+                ]
+
             };
-            case ADD_POST:
-                let newPost = state.newPostText;
-                return {
-                    ...state,
-                    newPostText: "",
-                        postData: [
-                            ...state.postData,
-                            {
-                                id: 3,
-                                message: newPost,
-                                likes: "0"
-                            }
-                        ]
-
-                };
 
 
-            case SET_USER_PROFILE:
-                return {
-                    ...state,
-                    profile: action.profile
-                };
+        case SET_USER_PROFILE:
+            return {
+                ...state,
+                profile: action.profile
+            };
 
-                case UPDATE_STATUS:
-                    return {
-                        ...state,
-                        status: action.status
-                    };
+        case UPDATE_STATUS:
+            return {
+                ...state,
+                status: action.status
+            };
 
-                   
-                default:
-                    return state;
+
+        default:
+            return state;
 
     }
 }
-export const addPostActionCreator = () => ({
-    type: ADD_POST
+export const addPost = (newPostText) => ({
+    type: ADD_POST,
+    newPostText
 });
-export const updateNewPostTextActionCreator = (text) => ({
-    type: UPDATE_NEW_POST_TEXT,
-    newText: text
-});
+
 export const setUserProfile = (profile) => ({
     type: SET_USER_PROFILE,
     profile
@@ -96,23 +86,23 @@ export const downloadProfileInfo = (userId) => {
 }
 
 
-export const receiveStatus = (userId)=>{
-    return (dispatch) =>{
+export const receiveStatus = (userId) => {
+    return (dispatch) => {
         profileApi.getStatus(userId)
-            .then(responce =>{
+            .then(responce => {
                 dispatch(updateStatus(responce.data));
             })
     }
 }
 
-export const pushStatus = (status)=>{
-    return (dispatch) =>{
+export const pushStatus = (status) => {
+    return (dispatch) => {
         profileApi.updateStatus(status)
-            .then(responce =>{
-                if(responce.data.resultCode === 0){
+            .then(responce => {
+                if (responce.data.resultCode === 0) {
                     dispatch(updateStatus(status));
                 }
-             
+
             })
     }
 }

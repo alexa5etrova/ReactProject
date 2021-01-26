@@ -1,4 +1,5 @@
 import * as axios from 'axios';
+import Login from '../components/Login/Login';
 
 
 const instance = axios.create({
@@ -18,7 +19,7 @@ export const usersApi = {
     followUser(userId) {
         return instance
             .post(`follow/${userId}`)
-         
+      
    
     },
 
@@ -49,5 +50,13 @@ export const authApi = {
     checkAuth(){
         return instance.get ('auth/me')
         
+    },
+
+    login(){
+        return instance.post('auth/login')
+    },
+
+    logout(){
+        return instance.delete('auth/login')
     }
 }
