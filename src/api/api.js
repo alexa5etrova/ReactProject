@@ -13,19 +13,19 @@ const instance = axios.create({
 export const usersApi = {
     getUsers(currentPage = 1, pageSize = 10) {
         return instance
-            .get(`users?page=${currentPage}&count=${pageSize}`)
+            .get(`users?page=${currentPage}&count=${pageSize}`);
                 },
 
     followUser(userId) {
         return instance
-            .post(`follow/${userId}`)
+            .post(`follow/${userId}`);
       
    
     },
 
     unfollowUser(userId){
         return instance
-        .delete(`follow/${userId}`)
+        .delete(`follow/${userId}`);
         
     }
 };
@@ -35,28 +35,28 @@ export const usersApi = {
 
 export const profileApi = {
     getProfileInfo(userId){
-        return instance.get('profile/' + userId)
+        return instance.get('profile/' + userId);
     },
     getStatus(userId){
-        return instance.get('profile/status/' +userId)
+        return instance.get('profile/status/' +userId);
     },
     updateStatus(status){
-        return instance.put('profile/status/', { status:status})
+        return instance.put('profile/status/', { status:status});
     }
 
 }
 
 export const authApi = {
     checkAuth(){
-        return instance.get ('auth/me')
+        return instance.get ('auth/me');
         
     },
 
-    login(){
-        return instance.post('auth/login')
+    login(email, password, rememberMe = false){
+        return instance.post('auth/login', {email, password, rememberMe});
     },
 
     logout(){
-        return instance.delete('auth/login')
+        return instance.delete('auth/login');
     }
 }

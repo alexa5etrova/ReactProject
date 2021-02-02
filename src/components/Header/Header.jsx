@@ -8,10 +8,10 @@ const Header = (props) => {
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTaVxGBGQObz9ko07oU9kCtSjpSnaSKw2-uaw&usqp=CAU" alt='echevaria logo'/>
         <div className={s.login}>
             {props.isAuth 
-            ? props.login
-            :<NavLink to='/login'></NavLink>
+            ? <div>{props.login} - <button onClick={props.logoutUser} className={s.button}>LogOut</button></div>
+            :<NavLink to='/login'>Login</NavLink>
             }
-            
+        
 
 
         </div>

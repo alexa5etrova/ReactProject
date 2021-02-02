@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header';
-import {confirmAuth} from './../../redux/authReducer';
+import {confirmAuth, logoutUser} from './../../redux/authReducer';
 import { connect } from 'react-redux';
 
 
@@ -21,4 +21,4 @@ let mapStateToProps = (state)=> ({
 });
 
 
-export default connect(mapStateToProps, {confirmAuth})(HeaderContainer);
+export default connect(mapStateToProps, {confirmAuth, logoutUser})(HeaderContainer);

@@ -1,4 +1,4 @@
-
+@import './../../../variables.scss';
 
 
 // .formControl .error input
@@ -23,3 +23,12 @@
    .check{
        color: red;
    }
+
+ .errorSubmit{
+    border: 2px solid red;
+    color: red;
+    background-color: white;
+    width: 150px;
+    border-radius: $blockRadius;
+    text-align: center;
+ }  
