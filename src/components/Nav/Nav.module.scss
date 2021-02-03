@@ -8,7 +8,7 @@
     margin-left: $windowGap;
     margin-right: $windowGap;
     display: grid;
-    grid-template-columns: repeat(6, 2fr);
+    grid-template-columns: repeat(3, 2fr);
     justify-items: center;
   }
   .item a{

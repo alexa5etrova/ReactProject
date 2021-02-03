@@ -25,7 +25,7 @@ const PostReduxForm = reduxForm({form:'addPostForm'})(PostForm);
 const PostBlock = (props) => {
 
     let posts = props.posts.map((p)=>(
-        <Post message={p.message} likes={p.likes} />
+        <Post key={p.id} message={p.message} likes={p.likes} />
     ));
 
    

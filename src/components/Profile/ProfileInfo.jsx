@@ -12,8 +12,8 @@ const ProfileInfo = (props) => {
         <div className={s.descriptionBlock}>
             <div className={s.imgContainer}>
                 {props.profile.photos.large
-                ?<img src={props.profile.photos.large} alt="user photo"/>
-                :<img src={userPhoto} alt="user did not added any photo"/>
+                ?<img src={props.profile.photos.large} alt="user"/>
+                :<img src={userPhoto} alt="user"/>
             }
                 
             </div>

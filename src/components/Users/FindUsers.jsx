@@ -21,7 +21,7 @@ const FindUsers = (props) => {
     return (<div>
         <div>
             {pages.map(p => {
-                return <span className={props.currentPage === p && s.selectedPage}
+                return <span key={p} className={(props.currentPage === p) && s.selectedPage}
                     onClick={() => { props.onPageChanged(p) }}>{p}  </span>
             })}
         </div>
@@ -35,7 +35,7 @@ const FindUsers = (props) => {
                     <div className={s.avatarCont}>
                         <div className={s.round}>
                             <NavLink to={'/profile/' + u.id}>
-                                <img src={u.photos.small != null ? u.photos.small : userPhoto} className={s.userAva} />
+                                <img src={u.photos.small != null ? u.photos.small : userPhoto} className={s.userAva} alt={"user"}/>
                             </NavLink>
                         </div>
 
