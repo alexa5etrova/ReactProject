@@ -4,7 +4,7 @@ import SocialMediaIcons from './SocialMediaIcons';
 import tick from './../../assets/images/tickCross/tick.svg';
 import cross from './../../assets/images/tickCross/cross.svg';
 import userPhoto from './../../assets/images/userPhoto.png';
-import Status from './Status';
+import StatusWithHooks from './StatusWithHooks';
 
 
 const ProfileInfo = (props) => {
@@ -21,7 +21,7 @@ const ProfileInfo = (props) => {
             <div className={s.infoContainer}>
                 <div className={s.userName}>{props.profile.fullName}</div>
                 <div className={s.aboutMe}>{props.profile.aboutMe}</div>
-                <Status className={s.status} status={props.status} pushStatus={props.pushStatus}/>    
+                <StatusWithHooks className={s.status} status={props.status} pushStatus={props.pushStatus}/>    
 
                 <div className={s.lookingForAJob}>
                     <div className={s.requireJob}>{'Looking for a job:'}{props.profile.lookingForAJob
