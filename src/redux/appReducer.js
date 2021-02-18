@@ -1,6 +1,6 @@
 import { confirmAuth } from "./authReducer";
 
-const INITIALIZE_APP = 'INITIALIZE_APP';
+const INITIALIZE_APP = "gybrid/app/INITIALIZE_APP";
 
 
 let initionalState = {
