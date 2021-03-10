@@ -23,7 +23,7 @@ class Status extends React.Component {
         this.setState({
             editMode: false
         })
-        this.props.pushStatus(this.state.status)
+        this.props.pushStatus(this.state.status);
     }
 
     onStatusChange = (e)=>{
@@ -40,7 +40,7 @@ class Status extends React.Component {
         return (
         <div>
             {!this.state.editMode
-            ? <div onDoubleClick={this.openEditMode}>{this.props.status || '----'}</div>
+            ? <div><span onDoubleClick={this.openEditMode}>{this.props.status || '----'}</span></div>
             : <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.closeEditMode} value={this.state.status}/>
             }
 
