@@ -4,18 +4,17 @@ import {  BrowserRouter, Redirect, Route, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import s from './App.module.scss';
 import LoadingImg from './components/commons/LoadingImg';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-import Login from './components/Login/Login';
+
 import Nav from './components/Nav/Nav';
 import ProfileContainer from './components/Profile/ProfileContainer';
-import FindUsersContainer from './components/Users/FindUsersContainer';
+import { withSuspence } from './hoc/withSuspence';
 import { initializeApp } from './redux/appReducer';
 import store from './redux/redux-store';
 
-
-
-
+const DialogsContainer = React.lazy(() => import ('./components/Dialogs/DialogsContainer'));
+const FindUsersContainer = React.lazy(() => import ('./components/Users/FindUsersContainer'));
+const Login = React.lazy(()=> import ('./components/Login/Login'));
 
 class App extends React.Component {
   componentDidMount(){
@@ -37,9 +36,9 @@ class App extends React.Component {
     <div className={s.content}>
       <Redirect to={'/profile'}/>
       <Route path='/profile/:userId?' render={() => <ProfileContainer />}  />
-      <Route path='/dialogs' render={() => <DialogsContainer /> }  />
-      <Route path='/users' render={()=> <FindUsersContainer /> } />
-      <Route path='/login' render={()=> <Login /> } />
+      <Route path='/dialogs' render={withSuspence(DialogsContainer)}  />
+      <Route path='/users' render={withSuspence(FindUsersContainer)} />
+      <Route path='/login' render={withSuspence(Login)} />
           
     </div>
   </div>
